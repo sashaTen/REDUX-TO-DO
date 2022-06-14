@@ -1,5 +1,10 @@
-import { configureStore } from "@reduxjs/toolkit";
+import { createStore } from "redux";
 
-export default configureStore({
-  reducer: {}
-});
+const reducer = (state, action) => {
+  console.log("reducer called");
+  return state;
+};
+
+const store = createStore(reducer, 0);
+
+export default store;
