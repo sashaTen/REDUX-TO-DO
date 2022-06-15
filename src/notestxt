@@ -247,5 +247,13 @@ store.dispatch({type:"plus"})
 store.dispatch({type:"changeName"})
 console.log(store.getState());
 // <p>{store.getState().nameChanger}</p>
-
+//  the  only  difference  is that  : 
+ /*
+ store   now  excepts  two  reducers 
+ and the store can  dispaatch  automatically  
+sorts  the action  types 
+and   we approach  them another way
+store.getState().reducerName
+ 
+ */
 
