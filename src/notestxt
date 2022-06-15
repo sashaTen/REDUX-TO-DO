@@ -67,3 +67,29 @@ console.log(newUser);
 //////////////////////////////////////
 REDUCER   FUNCTION RULES 
 /////////////////////////////////////
+
+
+
+/////////////////////
+VERY   BASIC  REDUCER/////////
+////////////////////
+
+const   original =    {
+  value : 0
+}
+
+const  reducer=(state , action)=>{
+  if(action.type==="plus"){
+    return {...state ,    value:  state.value+100}
+  }
+  return   state
+}
+
+const   action=  {
+  type:   "plus"
+}
+
+console.log(reducer(original ,   action));
+console.log(original);
+
+
