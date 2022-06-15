@@ -1,0 +1,69 @@
+//////////////
+LOCAL  STATE   UPDATE   WITH   INPUT 
+/////////////////////
+  const [count, setCount] = useState(0);
+  const [desiredNumber, setDesiredNumber] = useState(3);
+  const createNumber = (e) => {
+    e.preventDefault();
+
+    setDesiredNumber(parseInt(e.target.value));
+  };
+  return (
+    <div className="App">
+      <h1>{count}</h1>
+      <h2
+        onClick={() => {
+          setCount(count + 1);
+        }}
+      >
+        +
+      </h2>
+      <h2
+        onClick={() => {
+          setCount(count - 1);
+        }}
+      >
+        +
+      </h2>
+      <h2
+        onClick={() => {
+          setCount(count + desiredNumber);
+        }}
+      >
+        + number : {desiredNumber}
+      </h2>
+      <input onChange={createNumber} />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/////////////
+THIS   IS  HOW  DESTRUCTURING  WORKS 
+////////////
+const   user  =  {
+  name:   "sasha" , 
+  job  :   "data  analyst",
+  age: "28",
+  
+}
+
+let   newUser  =    {...user ,job : "web  dev"}
+
+console.log(newUser);   
+
+
+
+
+//////////////////////////////////////
+REDUCER   FUNCTION RULES 
+/////////////////////////////////////
