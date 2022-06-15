@@ -1,4 +1,3 @@
-import { createSlice } from "@reduxjs/toolkit";
 import "./styles.css";
 import { useState } from "react";
 import { combineReducers, configureStore } from "@reduxjs/toolkit";

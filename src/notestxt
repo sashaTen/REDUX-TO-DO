@@ -260,6 +260,38 @@ store.getState().reducerName
 /*
 
 
+const   counterSlice =   createSlice({
+name  :   "counter",
+initialState:  {
+  value :  10
+},
+reducers  : {
+  increment :   state=>{
+    state.value+=1
+  },
+  decrement : state=>  {
+    state.value-=1
+  }
+}
+
+})
+it  is   just   another   way to write  reducer
+cuz   if  you   will  create   the  store  with   configureStore
+it  will  work the  same  way as  a   normal  reducer
+
+
+
+
+/////this is   how you  can  use  type  of  action
+in  the slice   function 
+
+store.dispatch({type: "counter/increment"})
+
+store.dispatch({type: "counter/increment"})
+
+store.dispatch({type: "counter/increment"})
+console.log(store.getState());
+
 
 
 */
