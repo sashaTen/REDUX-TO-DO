@@ -134,4 +134,72 @@ SELECT   AND THE  DISPATCH
   console.log(selectJob(store.getState()));
 
 
+//////////////////////////////
+//////////////////////////////
+//////////////////////////////
+//////////////////////////////
+PROGRAMM   WHICH   CHANGES  THE  
+GLOBAL  NAME WITH   INPUT
+useState  AND THE REDUX 
+MADE  OUT THE  KNOWLEDGSES  THAT   I  GAINED
+IN  NOTES  ABOVE
+//////////////////////////////
+
+
+
+const   [name ,  setName] =   useState('sasha')
+
+ const changeName=(e)=>{
+   e.preventDefault()
+   setName(e.target.value)
+
+ }
+
+
+const   originalUser  =  {
+name  :   "sasha",
+job:"developer",
+age :   28
+}
+
+const actionChangeName=(text)=>{
+ return {
+   type:"changeName",
+   payload :   text
+ }   
+}
+const   userReducer=(state  =   originalUser ,   action)=>{
+  //console.log(state.age);
+    if(action.type==="changeName"){
+    //  console.log(action.payload);
+      
+      return   {...state,   name :action.payload}
+    }
+}
+
+
+//userReducer(originalUser,  actionChangeName(""))
+const  store   =   configureStore({
+  reducer :  userReducer
+})
+
+store.dispatch(actionChangeName(name)) //  puts  that 
+                                       //  action  function
+                                       //  into  the  reducer
+                                
+
+
+/*
+//////  the data  flow of the above  example
+1  state   name
+2  change name function 
+3  original  state
+4  action  function
+5  reducer
+6  store 
+7  dispaatch 
+8  display 
+*/
+
+
 
