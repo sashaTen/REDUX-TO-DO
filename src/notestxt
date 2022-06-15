@@ -203,3 +203,49 @@ store.dispatch(actionChangeName(name)) //  puts  that
 
 
 
+/////////////////////////////
+
+/////////////////////////////
+  THIS IS  HOW TO  COMBINE SEVERAL  REDUCERS 
+/////////////////////////////
+
+/////////////////////////////
+
+
+
+
+const  originalState=  {
+  value: 0
+}
+const  originalName =  {
+  name:  "alex"
+}
+
+
+const  nameReducer=(state=  originalName ,  action)=>{
+  if(action.type==="changeName"){
+    return   state="alexander"
+  }
+  return state
+}
+const  counterReducer=(state = originalState , action)=>{
+
+ if(action.type ==='plus'){
+   return state.value+1
+ } 
+ return  state
+}
+
+const store   =  configureStore({
+  reducer:   {
+    counter  :   counterReducer,
+    nameChanger  :  nameReducer,
+  }
+ 
+})
+store.dispatch({type:"plus"})
+store.dispatch({type:"changeName"})
+console.log(store.getState());
+// <p>{store.getState().nameChanger}</p>
+
+

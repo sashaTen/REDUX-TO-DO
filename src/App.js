@@ -1,6 +1,6 @@
 import "./styles.css";
 import { useState } from "react";
-import { configureStore } from "@reduxjs/toolkit";
+import { combineReducers, configureStore } from "@reduxjs/toolkit";
 export default function App() {
   return (
     <div className="App">
