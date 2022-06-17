@@ -11,7 +11,7 @@ const Redux = () => {
       hello redux
       <button onClick={() => dispatch(increment())}>+</button>
       <button onClick={() => dispatch(decrement())}>-</button>
-      {store.getState().value}
+      {count}
     </>
   );
 };
