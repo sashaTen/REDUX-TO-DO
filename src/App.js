@@ -8,7 +8,7 @@ slice  create
 slice.reducer put  into  the  store
 
 */
-
+import Redux from "./redux";
 import "./styles.css";
 import { createContext, useState } from "react";
 import { combineReducers, createSlice, configureStore } from "@reduxjs/toolkit";
@@ -68,17 +68,15 @@ export default function App() {
       cars: carInfo.reducer
     }
   });
+  const { deleteCarName } = carInfo.actions;
+  //  store.dispatch(carInfo.actions.deleteCarName("volvo   X3"));
 
-  store.dispatch(carInfo.actions.deleteCarName("volvo   X3"));
-  store.dispatch(action("uppercase"));
-  store.dispatch(action("minus"));
-
+  store.dispatch(deleteCarName("nexia"));
   console.log(store.getState());
 
   return (
     <div className="App">
-      <h1>Hello CodeSandbox</h1>
-      <h2>Start editing to see some magic happen!</h2>
+      <Redux />
     </div>
   );
 }

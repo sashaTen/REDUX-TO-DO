@@ -1,10 +1,5 @@
-import { createStore } from "redux";
-
-const reducer = (state, action) => {
-  console.log("reducer called");
-  return state;
+const Redux = () => {
+  return <>hello redux</>;
 };
 
-const store = createStore(reducer, 0);
-
-export default store;
+export default Redux;
