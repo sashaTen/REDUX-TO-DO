@@ -8,18 +8,18 @@ const counterSlice = createSlice({
     value: 0
   },
   reducers: {
-    increment: (state) => {
+    plus: (state) => {
       state.value += 1;
     },
-    decrement: (state) => {
+    minus: (state) => {
       state.value -= 1;
     }
   }
 });
 
-export const { increment, decrement } = counterSlice.actions;
+export const { plus, minus } = counterSlice.actions;
+
 export default configureStore({
   reducer: counterSlice.reducer
 });
-
 export const selectCount = (state) => state.value;

@@ -1,16 +1,26 @@
-import { createContext, startTransition, useState } from "react";
-import { combineReducers, createSlice, configureStore } from "@reduxjs/toolkit";
+import { selectCount, plus, minus } from "./counterSlice";
 import { useSelector, useDispatch } from "react-redux";
-import { increment, decrement, selectCount } from "./counterSlice";
-import store from "./counterSlice";
+
 const Redux = () => {
-  const count = useSelector(selectCount);
   const dispatch = useDispatch();
+  const count = useSelector(selectCount);
   return (
     <>
       hello redux
-      <button onClick={() => dispatch(increment())}>+</button>
-      <button onClick={() => dispatch(decrement())}>-</button>
+      <button
+        onClick={() => {
+          dispatch(plus());
+        }}
+      >
+        +
+      </button>
+      <button
+        onClick={() => {
+          dispatch(minus());
+        }}
+      >
+        -
+      </button>
       {count}
     </>
   );
