@@ -63,3 +63,38 @@
   store.dispatch(changePrice(25));
   store.dispatch(deleteCarName("nexia"));
   console.log(store.getState());
+
+
+
+
+  ///////////////
+  THIS IS   HOW TO USE  SLICE PROPERLY
+  
+const   carInfo   =  createSlice({
+  name  : "car_information",
+  initialState:   {
+    title  : "ferrari",
+    price :  "20000$",
+    production_year   :   2002,
+  },
+  reducers   : {
+    changeName :  (state ,  action)=>{
+      state.title   =    action
+        },
+     changeYear:   (state ,   action)=>{
+       state.production_year  =    action
+     }   ,
+    
+  }
+
+})
+
+const   {changeName ,    changeYear} =   carInfo.actions
+const  store   =   configureStore({
+  reducer   :   carInfo.reducer
+})
+store.dispatch(changeName("matiz"))
+store.dispatch(changeYear(2021))
+console.log(store.getState());
+
+
