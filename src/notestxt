@@ -295,3 +295,12 @@ console.log(store.getState());
 
 
 */
+  ///// this is how to   immitate the   pyload 
+  in the slice  function 
+
+   deleteCarName: (state , action) => {
+        state.carName =  action;
+      }
+
+
+    store.dispatch(carInfo.actions.deleteCarName("volvo   X3"));    

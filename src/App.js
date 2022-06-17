@@ -41,12 +41,9 @@ export default function App() {
       carName: "mercedez"
     },
     reducers: {
-      deleteCarName: (state) => {
-        state.carName = "";
+      deleteCarName: (state, action) => {
+        state.carName = action;
       }
-    },
-    nullPrice: (state) => {
-      return { ...state, price: 0 };
     }
   });
 
@@ -72,7 +69,7 @@ export default function App() {
     }
   });
 
-  store.dispatch(carInfo.actions.deleteCarName());
+  store.dispatch(carInfo.actions.deleteCarName("volvo   X3"));
   store.dispatch(action("uppercase"));
   store.dispatch(action("minus"));
 
