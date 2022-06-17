@@ -1,306 +1,65 @@
-//////////////
-LOCAL  STATE   UPDATE   WITH   INPUT 
-/////////////////////
-  const [count, setCount] = useState(0);
-  const [desiredNumber, setDesiredNumber] = useState(3);
-  const createNumber = (e) => {
-    e.preventDefault();
-
-    setDesiredNumber(parseInt(e.target.value));
-  };
-  return (
-    <div className="App">
-      <h1>{count}</h1>
-      <h2
-        onClick={() => {
-          setCount(count + 1);
-        }}
-      >
-        +
-      </h2>
-      <h2
-        onClick={() => {
-          setCount(count - 1);
-        }}
-      >
-        +
-      </h2>
-      <h2
-        onClick={() => {
-          setCount(count + desiredNumber);
-        }}
-      >
-        + number : {desiredNumber}
-      </h2>
-      <input onChange={createNumber} />
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/////////////
-THIS   IS  HOW  DESTRUCTURING  WORKS 
-////////////
-const   user  =  {
-  name:   "sasha" , 
-  job  :   "data  analyst",
-  age: "28",
-  
-}
-
-let   newUser  =    {...user ,job : "web  dev"}
-
-console.log(newUser);   
-
-
-
-
-//////////////////////////////////////
-REDUCER   FUNCTION RULES 
-/////////////////////////////////////
-
-
-
-/////////////////////
-VERY   BASIC  REDUCER/////////
-////////////////////
-
-const   original =    {
-  value : 0
-}
-
-const  reducer=(state , action)=>{
-  if(action.type==="plus"){
-    return {...state ,    value:  state.value+100}
-  }
-  return   state
-}
-
-const   action=  {
-  type:   "plus"
-}
-
-console.log(reducer(original ,   action));
-console.log(original);
-
-
-/////////////////
-///////////
-SELECT   AND THE  DISPATCH
-/////////////////////////
-
-
  const original = {
-    value: 0,
-    job: "software  engineer"
+    value: 0
   };
-
-  const theReducer = (state = original, action) => {
+  const countReducer = (state = original, action) => {
     if (action.type === "plus") {
-      return { ...state, value: state.value + 100 };
-    } else if (action.type === "changeJob") {
-      return { ...state, job: "web developer" };
+      return state.value + 1000;
+    } else if (action.type === "minus") {
+      return state.value - 1000;
     }
+
     return state;
   };
 
-  const action = {
-    type: "plus"
+  const action = (text) => {
+    return {
+      type: text
+    };
+  };
+  ///////////////////car   info
+  /////////////////////////////////
+  const carInfo = createSlice({
+    name: "carSlice",
+    initialState: {
+      year: 2020,
+      price: 20000,
+      carName: "mercedez"
+    },
+    reducers: {
+      deleteCarName: (state, action) => {
+        state.carName = action;
+      },
+      changePrice: (state, price) => {
+        state.price = price;
+      }
+    }
+  });
+  /////////////////////////////////////////////
+  ///COMPANY  SLICE ;
+  /////////////////
+  /////////////change  name  reudcer  second  one
+  const user = {
+    name: "alecander",
+    age: 28,
+    job: "data   scientist"
+  };
+  const NameReducer = (state = user, action) => {
+    if (action.type === "uppercase") {
+      return { ...state, name: "Sasha Ten" };
+    }
+
+    return state;
   };
 
   const store = configureStore({
-    reducer: theReducer
-  });
-
-  store.dispatch({ type: "plus" });
-  store.dispatch({ type: "changeJob" });
-
-  //console.log(store.getState());
-
-  ////////  the  selectors
-
-  const selectValue = (state) => state.value;
-  const selectJob = (state) => state.job;
-  console.log(selectValue(store.getState()));
-  console.log(selectJob(store.getState()));
-
-
-//////////////////////////////
-//////////////////////////////
-//////////////////////////////
-//////////////////////////////
-PROGRAMM   WHICH   CHANGES  THE  
-GLOBAL  NAME WITH   INPUT
-useState  AND THE REDUX 
-MADE  OUT THE  KNOWLEDGSES  THAT   I  GAINED
-IN  NOTES  ABOVE
-//////////////////////////////
-
-
-
-const   [name ,  setName] =   useState('sasha')
-
- const changeName=(e)=>{
-   e.preventDefault()
-   setName(e.target.value)
-
- }
-
-
-const   originalUser  =  {
-name  :   "sasha",
-job:"developer",
-age :   28
-}
-
-const actionChangeName=(text)=>{
- return {
-   type:"changeName",
-   payload :   text
- }   
-}
-const   userReducer=(state  =   originalUser ,   action)=>{
-  //console.log(state.age);
-    if(action.type==="changeName"){
-    //  console.log(action.payload);
-      
-      return   {...state,   name :action.payload}
+    reducer: {
+      counter: countReducer,
+      changeName: NameReducer,
+      cars: carInfo.reducer
     }
-}
-
-
-//userReducer(originalUser,  actionChangeName(""))
-const  store   =   configureStore({
-  reducer :  userReducer
-})
-
-store.dispatch(actionChangeName(name)) //  puts  that 
-                                       //  action  function
-                                       //  into  the  reducer
-                                
-
-
-/*
-//////  the data  flow of the above  example
-1  state   name
-2  change name function 
-3  original  state
-4  action  function
-5  reducer
-6  store 
-7  dispaatch 
-8  display 
-*/
-
-
-
-/////////////////////////////
-
-/////////////////////////////
-  THIS IS  HOW TO  COMBINE SEVERAL  REDUCERS 
-/////////////////////////////
-
-/////////////////////////////
-
-
-
-
-const  originalState=  {
-  value: 0
-}
-const  originalName =  {
-  name:  "alex"
-}
-
-
-const  nameReducer=(state=  originalName ,  action)=>{
-  if(action.type==="changeName"){
-    return   state="alexander"
-  }
-  return state
-}
-const  counterReducer=(state = originalState , action)=>{
-
- if(action.type ==='plus'){
-   return state.value+1
- } 
- return  state
-}
-
-const store   =  configureStore({
-  reducer:   {
-    counter  :   counterReducer,
-    nameChanger  :  nameReducer,
-  }
- 
-})
-store.dispatch({type:"plus"})
-store.dispatch({type:"changeName"})
-console.log(store.getState());
-// <p>{store.getState().nameChanger}</p>
-//  the  only  difference  is that  : 
- /*
- store   now  excepts  two  reducers 
- and the store can  dispaatch  automatically  
-sorts  the action  types 
-and   we approach  them another way
-store.getState().reducerName
- 
- */
-
-/*
-
-
-const   counterSlice =   createSlice({
-name  :   "counter",
-initialState:  {
-  value :  10
-},
-reducers  : {
-  increment :   state=>{
-    state.value+=1
-  },
-  decrement : state=>  {
-    state.value-=1
-  }
-}
-
-})
-it  is   just   another   way to write  reducer
-cuz   if  you   will  create   the  store  with   configureStore
-it  will  work the  same  way as  a   normal  reducer
-
-
-
-
-/////this is   how you  can  use  type  of  action
-in  the slice   function 
-
-store.dispatch({type: "counter/increment"})
-
-store.dispatch({type: "counter/increment"})
-
-store.dispatch({type: "counter/increment"})
-console.log(store.getState());
-
-
-
-*/
-  ///// this is how to   immitate the   pyload 
-  in the slice  function 
-
-   deleteCarName: (state , action) => {
-        state.carName =  action;
-      }
-
-
-    store.dispatch(carInfo.actions.deleteCarName("volvo   X3"));    
+  });
+  const { deleteCarName, changePrice } = carInfo.actions;
+  //  store.dispatch(carInfo.actions.deleteCarName("volvo   X3"));
+  store.dispatch(changePrice(25));
+  store.dispatch(deleteCarName("nexia"));
+  console.log(store.getState());
