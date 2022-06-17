@@ -72,9 +72,10 @@ export default function App() {
     }
   });
 
-  store.dispatch(action("carSlice/nullPrice"));
+  store.dispatch(carInfo.actions.deleteCarName());
   store.dispatch(action("uppercase"));
   store.dispatch(action("minus"));
+
   console.log(store.getState());
 
   return (
