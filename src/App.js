@@ -32,7 +32,7 @@ export default function App() {
     };
   };
   ///////////////////car   info
-
+  /////////////////////////////////
   const carInfo = createSlice({
     name: "carSlice",
     initialState: {
@@ -43,10 +43,15 @@ export default function App() {
     reducers: {
       deleteCarName: (state, action) => {
         state.carName = action;
+      },
+      changePrice: (state, price) => {
+        state.price = price;
       }
     }
   });
-
+  /////////////////////////////////////////////
+  ///COMPANY  SLICE ;
+  /////////////////
   /////////////change  name  reudcer  second  one
   const user = {
     name: "alecander",
@@ -68,9 +73,9 @@ export default function App() {
       cars: carInfo.reducer
     }
   });
-  const { deleteCarName } = carInfo.actions;
+  const { deleteCarName, changePrice } = carInfo.actions;
   //  store.dispatch(carInfo.actions.deleteCarName("volvo   X3"));
-
+  store.dispatch(changePrice(25));
   store.dispatch(deleteCarName("nexia"));
   console.log(store.getState());
 
