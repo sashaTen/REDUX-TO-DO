@@ -97,4 +97,32 @@ store.dispatch(changeName("matiz"))
 store.dispatch(changeYear(2021))
 console.log(store.getState());
 
+/////////////////////////////////////////
+
+redux   tutorial    number  3 
+//////////////////////////////////////////
+
+
+
+
+in  total   it is  just  the   new  leveel   of  working   with the   state 
+for   expamle you  can  fetch the  data  from  the  server and then 
+just with  useeffect  and the  usestate   update  the initial  state
+and pass it to the slice
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
