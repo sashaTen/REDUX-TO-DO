@@ -8,7 +8,9 @@ const counterSlice = createSlice({
   },
 
   reducers: {
-    plus: (state) => (state.value += 10000),
+    plus: (state) => {
+      state.value += 10000;
+    },
     minus: (state) => {
       state.value -= 100000;
     }
@@ -18,3 +20,8 @@ const counterSlice = createSlice({
 const store = configureStore({
   reducer: counterSlice.reducer
 });
+
+export default store;
+
+export const selectCount = (state) => state.value;
+export const { plus, minus } = counterSlice.actions;
