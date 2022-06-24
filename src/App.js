@@ -7,7 +7,11 @@ import store from "./counterSlice";
 import { Provider } from "react-redux";
 
 const App = () => {
-  return <>hello app</>;
+  return (
+    <>
+      <Redux />
+    </>
+  );
 };
 
 export default App;
